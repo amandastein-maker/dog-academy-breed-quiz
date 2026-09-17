@@ -41,4 +41,44 @@ const content = (await readFile("src/content.html", "utf8")).replace("<!-- QUIZ 
 const fragment = `<div id="da-breed-tool">${content}</div>`;
 await writeFile("dist/page-fragment.html", fragment);
 await writeFile("dist/index.html", `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Dog Breed Quiz: Find the Best Dog for You | Dog Academy</title><meta name="description" content="Take Dog Academy's dog breed quiz to explore three matches for your lifestyle, plus adoption or puppy pages for your state."><link rel="stylesheet" href="./assets/quiz.css"><script defer src="./assets/quiz.js"></script></head><body><main>${fragment}</main></body></html>`);
-console.log("Built direct-page HTML, scoped CSS and bundled JavaScript. No iframe or Sites runtime required.");
+
+const embedQuiz = `<div id="da-breed-quiz-root">${renderToString(createElement(BreedQuiz, { embedded: true }))}</div><noscript><p>Turn on JavaScript to take the interactive quiz.</p></noscript>`;
+await writeFile("dist/embed.html", `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Dog Breed Quiz</title><meta name="robots" content="noindex"><link rel="stylesheet" href="./assets/quiz.css"><script>window.__DA_QUIZ_EMBEDDED__ = true;</script><script defer src="./assets/quiz.js"></script></head><body><div id="da-breed-tool">${embedQuiz}</div></body></html>`);
+
+await writeFile("dist/embed.js", `(function () {
+  "use strict";
+
+  var script = document.currentScript;
+  if (!script) return;
+
+  var quizOrigin = new URL(script.src).origin;
+  var targets = document.querySelectorAll("[data-dog-academy-breed-quiz]");
+
+  targets.forEach(function (target, index) {
+    if (target.querySelector("iframe")) return;
+
+    var frame = document.createElement("iframe");
+    frame.src = quizOrigin + "/embed.html";
+    frame.title = "Dog Academy dog breed quiz";
+    frame.loading = index === 0 ? "eager" : "lazy";
+    frame.allow = "clipboard-write; web-share";
+    frame.style.width = "100%";
+    frame.style.minHeight = "760px";
+    frame.style.border = "0";
+    frame.style.display = "block";
+    frame.style.overflow = "hidden";
+    target.appendChild(frame);
+
+    window.addEventListener("message", function (event) {
+      if (event.origin !== quizOrigin || event.source !== frame.contentWindow) return;
+      if (!event.data || event.data.type !== "dog-academy-quiz:resize") return;
+      var height = Number(event.data.height);
+      if (Number.isFinite(height) && height > 300 && height < 20000) {
+        frame.style.height = Math.ceil(height) + "px";
+      }
+    });
+  });
+})();
+`);
+
+console.log("Built direct-page HTML, scoped CSS, bundled JavaScript, and a standalone embed.html + embed.js for hosting off-WordPress (e.g. Cloudflare Pages) with an iframe embed.");
