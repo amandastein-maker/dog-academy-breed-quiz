@@ -22,8 +22,8 @@ button:focus-visible, a:focus-visible, select:focus-visible { outline: 3px solid
 
 .site-shell {
   min-height: 100vh;
-  overflow: hidden;
-  position: relative;
+  overflow: hidden !important;
+  position: relative !important;
   background: radial-gradient(circle at 78% 13%, rgba(40, 100, 173, .1), transparent 24rem), linear-gradient(180deg, #ffffff 0%, var(--cream) 100%);
 }
 
@@ -49,9 +49,9 @@ button:focus-visible, a:focus-visible, select:focus-visible { outline: 3px solid
 .hero-facts { display: flex; gap: 26px; margin-top: 35px; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
 .hero-facts strong { color: var(--teal); font-size: 18px; margin-right: 3px; }
 
-.hero-visual { position: relative; min-height: 570px; }
-.dog-card { position: absolute; margin: 0; overflow: hidden; background: #fff; border: 8px solid #fff; box-shadow: 0 24px 70px rgba(29, 47, 70, .18); }
-.dog-card img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.hero-visual { position: relative !important; overflow: hidden !important; min-height: 570px; max-height: 640px; }
+.dog-card { position: absolute !important; margin: 0; overflow: hidden !important; background: #fff; border: 8px solid #fff; box-shadow: 0 24px 70px rgba(29, 47, 70, .18); max-width: 620px !important; max-height: 560px !important; }
+.dog-card img { display: block; width: 100% !important; height: 100% !important; max-width: none !important; max-height: none !important; object-fit: cover !important; }
 .dog-card figcaption { position: absolute; right: 12px; bottom: 12px; padding: 8px 12px; border-radius: 999px; background: rgba(255, 253, 248, .92); color: var(--ink); font-size: 11px; font-weight: 800; }
 .dog-card-1 { width: 66%; height: 68%; left: 16%; top: 3%; border-radius: 47% 47% 19% 19%; transform: rotate(2deg); }
 .dog-card-2 { width: 43%; height: 43%; right: -2%; bottom: 3%; border-radius: 50% 24% 50% 24%; transform: rotate(4deg); }
@@ -103,9 +103,9 @@ button:focus-visible, a:focus-visible, select:focus-visible { outline: 3px solid
 .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: start; }
 .result-card { overflow: hidden; border: 1px solid var(--line); border-radius: 28px; background: var(--paper); box-shadow: 0 20px 48px rgba(29, 47, 70, .09); }
 .result-card-1 { transform: translateY(-12px); border-color: var(--coral); box-shadow: 0 25px 55px rgba(27, 91, 175, .14); }
-.result-photo { height: 240px; position: relative; overflow: hidden; background: var(--mint); }
+.result-photo { height: 240px; position: relative !important; overflow: hidden !important; background: var(--mint); }
 .result-photo::after { content: "✦"; position: absolute; inset: 50% auto auto 50%; color: rgba(40, 100, 173, .2); font-size: 64px; transform: translate(-50%, -50%); z-index: 0; }
-.result-photo img { width: 100%; height: 100%; display: block; position: relative; object-fit: cover; transition: transform .35s ease, opacity .2s ease; z-index: 1; }
+.result-photo img { width: 100% !important; height: 100% !important; max-width: none !important; max-height: none !important; display: block; position: relative; object-fit: cover !important; transition: transform .35s ease, opacity .2s ease; z-index: 1; }
 .result-card:hover .result-photo img { transform: scale(1.025); }
 .rank-badge { position: absolute; left: 16px; top: 16px; z-index: 2; padding: 9px 12px; border-radius: 999px; background: var(--teal); color: white; font-size: 11px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
 .result-card-1 .rank-badge { background: var(--coral); color: white; }
