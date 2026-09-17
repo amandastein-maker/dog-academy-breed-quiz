@@ -41,4 +41,10 @@ const content = (await readFile("src/content.html", "utf8")).replace("<!-- QUIZ 
 const fragment = `<div id="da-breed-tool">${content}</div>`;
 await writeFile("dist/page-fragment.html", fragment);
 await writeFile("dist/index.html", `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Dog Breed Quiz: Find the Best Dog for You | Dog Academy</title><meta name="description" content="Take Dog Academy's dog breed quiz to explore three matches for your lifestyle, plus adoption or puppy pages for your state."><link rel="stylesheet" href="./assets/quiz.css"><script defer src="./assets/quiz.js"></script></head><body><main>${fragment}</main></body></html>`);
-console.log("Built direct-page HTML, scoped CSS and bundled JavaScript. No iframe or Sites runtime required.");
+
+const css = await readFile("dist/assets/quiz.css", "utf8");
+const js = await readFile("dist/assets/quiz.js", "utf8");
+if (css.includes("</style") || js.includes("</script")) throw new Error("Asset contains a closing tag that would break inline embedding");
+await writeFile("dist/wordpress-embed.html", `<style>\n${css}\n</style>\n${fragment}\n<script>\n${js}\n</script>\n`);
+
+console.log("Built direct-page HTML, scoped CSS, bundled JavaScript and a self-contained WordPress embed. No iframe or Sites runtime required.");

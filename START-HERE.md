@@ -20,6 +20,8 @@ The source snapshot is commit `54bef39fb4fc5a4c254ebdd0703d9795d26433c9`, previo
 - Facebook, X, Pinterest, email, native sharing and copy-link controls. Result links use the host page's path instead of the host site's homepage.
 - Readable source, production assets, pinned dependency lockfile, build command, automated tests and optional GitHub Actions workflow.
 - Installation, GitHub and launch-checklist documents.
+- `native/dist/wordpress-embed.html`: the whole tool (styles, markup and script) as one file, ready to paste into a single WordPress Custom HTML block. See INSTALLATION.md.
+- A root `wrangler.jsonc` so `npx wrangler deploy` publishes `native/dist` as a static Cloudflare Workers site for preview/demo purposes (not the DA production integration). See INSTALLATION.md.
 
 ## Status and remaining decisions
 

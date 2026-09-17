@@ -1,5 +1,15 @@
 # Direct integration into Dog Academy
 
+## Fastest: single paste into a WordPress Custom HTML block
+
+`native/dist/wordpress-embed.html` is a self-contained copy of the same tool: the scoped CSS in a `<style>` tag, the page fragment (H1, quiz mount point and all page content/FAQs), and the bundled JavaScript in a `<script>` tag, all in one file. No separate asset upload is required.
+
+1. In the WordPress block editor, add a **Custom HTML** block (or a Code block in a page builder that renders raw HTML/CSS/JS unmodified — not a "Classic" text block, which can strip `<script>`/`<style>`).
+2. Open `native/dist/wordpress-embed.html`, copy its entire contents, and paste them into the block.
+3. Publish and view the live page. Confirm the quiz interacts correctly and the FAQ/heading content below it renders.
+
+This is the same build as the rest of this package: rebuild with `npm run build` after any source change and re-paste. See "Preferred" below if you'd rather host `quiz.css`/`quiz.js` as separate cached files instead of inlining them.
+
 ## Preferred: existing CMS or server-rendered page
 
 1. Create or choose the intended DA page, for example `/dog-breed-quiz/`. This URL is a suggestion, not an existing route established by this handoff.
@@ -21,6 +31,16 @@ Do not alter the rendered markup inside `#da-breed-quiz-root` independently of t
 ## Alternative: full standalone page on DA
 
 Serve `native/dist/index.html` at the desired path, with the `assets/` folder next to it, retaining relative paths. This file includes the full document, title, description, H1 and assets. It does not include DA's global site navigation; integrate with the DA template if that is required. Test via HTTP/HTTPS rather than opening a local file for sharing tests.
+
+## Cloudflare preview/demo deployment
+
+A root-level `wrangler.jsonc` deploys `native/dist` as static Workers assets (no server, no D1/R2 bindings — just the prebuilt HTML/CSS/JS from this folder). This is what makes `npx wrangler deploy` at the repository root succeed; it is a preview/demo host, not the DA production site. To deploy manually:
+
+```sh
+npx wrangler deploy
+```
+
+Requires a Cloudflare account connected via `wrangler login` (or a `CLOUDFLARE_API_TOKEN`/`CLOUDFLARE_ACCOUNT_ID` env pair) in whatever environment runs the command. Rebuild `native/dist` first if source changed (`cd native && npm run build`) since the deploy publishes whatever is already on disk in `native/dist`.
 
 ## Build and edit
 
