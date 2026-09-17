@@ -1,0 +1,16 @@
+{
+  // NOTE: "name" must match the Worker/Pages project name shown in your
+  // Cloudflare dashboard. If your project has a different name, change
+  // this to match it before deploying, or "wrangler deploy"/"wrangler
+  // versions upload" will create a separate project instead of updating
+  // the one you already made.
+  //
+  // This file exists at the repo root (in addition to native/wrangler.jsonc)
+  // because Cloudflare's Workers Builds deploy step runs from the git
+  // checkout root, not from the build's configured root directory.
+  "name": "dog-academy-breed-quiz",
+  "compatibility_date": "2026-09-17",
+  "assets": {
+    "directory": "./native/dist"
+  }
+}
