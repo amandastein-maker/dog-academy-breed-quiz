@@ -1,0 +1,11 @@
+{
+  // NOTE: "name" must match the Worker/Pages project name shown in your
+  // Cloudflare dashboard. If your project has a different name, change
+  // this to match it before deploying, or "wrangler deploy" will create
+  // a separate project instead of updating the one you already made.
+  "name": "dog-academy-breed-quiz",
+  "compatibility_date": "2026-09-17",
+  "assets": {
+    "directory": "./dist"
+  }
+}
