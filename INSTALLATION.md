@@ -26,7 +26,7 @@ Adjust asset URLs to your actual hosting paths. Do not use the old `embed.js` al
 
 The fragment supplies one H1 and an outer `#da-breed-tool` wrapper. If your CMS already outputs the page H1, remove the duplicated heading from `src/content.html` and rebuild, or disable the CMS title for this page. Insert the tool once per page; IDs assume a single quiz. Do not nest another main landmark around a page that already has one.
 
-Do not alter the rendered markup inside `#da-breed-quiz-root` independently of the React source: hydration expects them to match. Make quiz edits in `src/Quiz.tsx`, then rebuild HTML and JS together. Edit supporting text in `src/content.html` and regenerate.
+The rendered markup inside `#da-breed-quiz-root` is for crawlers and no-JavaScript visitors; the script replaces it on load rather than hydrating it, so host-side filters (WordPress texturizing, image attributes, autop) cannot break the quiz. Still make quiz edits in `src/Quiz.tsx` and rebuild HTML and JS together so the two stay in step. Edit supporting text in `src/content.html` and regenerate.
 
 ## Alternative: full standalone page on DA
 
