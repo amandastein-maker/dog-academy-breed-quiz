@@ -36,28 +36,25 @@
 #da-breed-tool .brand-name { font-size: 15px; font-weight: 900; letter-spacing: .14em; }
 #da-breed-tool .header-note { color: var(--muted); font-size: 13px; letter-spacing: .11em; text-transform: uppercase; }
 
-#da-breed-tool .hero { min-height: calc(100vh - 170px); display: grid; grid-template-columns: .92fr 1.08fr; gap: 70px; align-items: center; padding-block: 60px 76px; }
+#da-breed-tool .hero { display: block; max-width: 780px; margin: 0 auto; padding: 56px 0 60px; text-align: center; }
 #da-breed-tool .eyebrow { display: flex; align-items: center; gap: 9px; margin: 0 0 18px; color: var(--coral); font-size: 13px; font-weight: 900; letter-spacing: .16em; text-transform: uppercase; }
-#da-breed-tool .hero h2 { margin: 0; max-width: 680px; color: var(--teal); font-family: Georgia, "Times New Roman", serif; font-size: clamp(48px, 5.2vw, 78px); font-weight: 500; letter-spacing: -.05em; line-height: .97; }
-#da-breed-tool .hero-intro { max-width: 590px; margin: 28px 0 32px; color: var(--muted); font-size: 18px; line-height: 1.7; }
+#da-breed-tool .hero .eyebrow { justify-content: center; }
+#da-breed-tool .hero h2 { margin: 0 auto; max-width: 680px; color: var(--teal); font-family: Georgia, "Times New Roman", serif; font-size: clamp(44px, 5.2vw, 72px); font-weight: 500; letter-spacing: -.05em; line-height: .97; }
+#da-breed-tool .hero-intro { max-width: 590px; margin: 24px auto 30px; color: var(--muted); font-size: 18px; line-height: 1.7; }
 #da-breed-tool .primary-button { border: 0; border-radius: 999px; padding: 18px 25px; background: var(--yellow); color: var(--ink); cursor: pointer; box-shadow: 0 9px 0 var(--yellow-dark); font-weight: 900; transition: transform .18s ease, box-shadow .18s ease, background .18s ease; }
 #da-breed-tool .primary-button:hover { background: #35eda4; transform: translateY(-2px); box-shadow: 0 11px 0 var(--yellow-dark); }
 #da-breed-tool .primary-button:active { transform: translateY(5px); box-shadow: 0 4px 0 var(--yellow-dark); }
 #da-breed-tool .primary-button span { padding-left: 12px; }
-#da-breed-tool .hero-facts { display: flex; gap: 26px; margin-top: 35px; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+#da-breed-tool .hero-facts { margin-top: 30px; text-align: center; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+#da-breed-tool .hero-facts span { display: inline-block; margin: 6px 13px; }
 #da-breed-tool .hero-facts strong { color: var(--teal); font-size: 18px; margin-right: 3px; }
 
-#da-breed-tool .hero-visual { position: relative; min-height: 570px; }
-#da-breed-tool .dog-card { position: absolute; margin: 0; overflow: hidden; background: #fff; border: 8px solid #fff; box-shadow: 0 24px 70px rgba(29, 47, 70, .18); }
-#da-breed-tool .dog-card img { display: block; width: 100%; height: 100%; object-fit: cover; }
-#da-breed-tool .dog-card figcaption { position: absolute; right: 12px; bottom: 12px; padding: 8px 12px; border-radius: 999px; background: rgba(255, 253, 248, .92); color: var(--ink); font-size: 11px; font-weight: 800; }
-#da-breed-tool .dog-card-1 { width: 66%; height: 68%; left: 16%; top: 3%; border-radius: 47% 47% 19% 19%; transform: rotate(2deg); }
-#da-breed-tool .dog-card-2 { width: 43%; height: 43%; right: -2%; bottom: 3%; border-radius: 50% 24% 50% 24%; transform: rotate(4deg); }
-#da-breed-tool .dog-card-3 { width: 38%; height: 36%; left: -1%; bottom: 0; border-radius: 20% 50% 22% 48%; transform: rotate(-6deg); }
-#da-breed-tool .match-badge { width: 116px; height: 116px; display: grid; place-items: center; position: absolute; right: 2%; top: 4%; border-radius: 50%; background: var(--coral); color: white; text-align: center; font-family: Georgia, serif; font-size: 17px; font-weight: 700; line-height: 1.1; transform: rotate(8deg); box-shadow: 0 12px 30px rgba(29, 47, 70, .18); }
-#da-breed-tool .scribble { position: absolute; border: 2px solid var(--teal); opacity: .7; }
-#da-breed-tool .scribble-one { width: 80px; height: 80px; border-radius: 50%; right: 8%; bottom: 24%; }
-#da-breed-tool .scribble-two { width: 46px; height: 46px; border-color: var(--coral); border-radius: 45% 55% 50% 50%; left: 5%; top: 8%; transform: rotate(20deg); }
+/* Inline-block row, fixed pixel sizes, aspect-ratio instead of percentage
+   heights: survives host-page overrides of position, height: auto, grid/flex. */
+#da-breed-tool .hero-previews { list-style: none; margin: 44px 0 0; padding: 0; text-align: center; }
+#da-breed-tool .hero-previews li { display: inline-block; vertical-align: top; margin: 0 12px 16px; }
+#da-breed-tool .hero-previews img { display: block; width: 180px; max-width: 100%; height: 180px; aspect-ratio: 1 / 1; margin: 0 auto 10px; border-radius: 50%; border: 5px solid #fff; box-shadow: 0 14px 34px rgba(29, 47, 70, .16); object-fit: cover; }
+#da-breed-tool .hero-previews span { display: block; color: var(--ink); font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
 
 #da-breed-tool .quiz-stage { min-height: calc(100vh - 170px); padding: 48px 0 76px; }
 #da-breed-tool .quiz-topline { display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: .08em; }
@@ -146,15 +143,10 @@
 #da-breed-tool .site-shell.is-embedded { min-height: 0; background: transparent; }
 #da-breed-tool .site-shell.is-embedded .site-header, #da-breed-tool .site-shell.is-embedded .site-footer { display: none; }
 #da-breed-tool .site-shell.is-embedded .hero, #da-breed-tool .site-shell.is-embedded .quiz-stage, #da-breed-tool .site-shell.is-embedded .results-stage { width: min(1180px, calc(100% - 24px)); }
-#da-breed-tool .site-shell.is-embedded .hero { min-height: 680px; }
 #da-breed-tool .site-shell.is-embedded .quiz-stage { min-height: 680px; }
 
 @media (max-width: 900px) {
-  #da-breed-tool .hero { grid-template-columns: 1fr; gap: 22px; padding-top: 48px; }
-  #da-breed-tool .hero-copy { text-align: center; }
-  #da-breed-tool .hero h2, #da-breed-tool .hero-intro { margin-inline: auto; }
-  #da-breed-tool .hero .eyebrow, #da-breed-tool .hero-facts { justify-content: center; }
-  #da-breed-tool .hero-visual { min-height: 500px; width: min(620px, 100%); margin: 0 auto; }
+  #da-breed-tool .hero { padding-top: 48px; }
   #da-breed-tool .answer-grid-three { grid-template-columns: repeat(2, 1fr); }
   #da-breed-tool .results-grid { grid-template-columns: 1fr; max-width: 650px; margin: 0 auto; }
   #da-breed-tool .result-card-1 { transform: none; }
@@ -169,16 +161,14 @@
   #da-breed-tool .site-header { height: 74px; }
   #da-breed-tool .brand-name { font-size: 12px; }
   #da-breed-tool .header-note { display: none; }
-  #da-breed-tool .hero { min-height: auto; padding: 46px 0 58px; }
-  #da-breed-tool .hero h2 { font-size: clamp(49px, 16vw, 68px); }
+  #da-breed-tool .hero { padding: 40px 0 48px; }
+  #da-breed-tool .hero h2 { font-size: clamp(40px, 12vw, 56px); }
   #da-breed-tool .hero-intro { font-size: 16px; }
-  #da-breed-tool .hero-facts { flex-wrap: wrap; justify-content: center; gap: 12px 20px; }
-  #da-breed-tool .hero-visual { min-height: 400px; }
-  #da-breed-tool .match-badge { width: 92px; height: 92px; font-size: 14px; }
-  #da-breed-tool .dog-card { border-width: 5px; }
-  #da-breed-tool .dog-card-1 { width: 75%; height: 65%; left: 10%; }
-  #da-breed-tool .dog-card-2 { width: 48%; height: 39%; }
-  #da-breed-tool .dog-card-3 { width: 45%; height: 34%; }
+  #da-breed-tool .hero-facts span { margin: 4px 10px; }
+  #da-breed-tool .hero-previews { margin-top: 32px; }
+  #da-breed-tool .hero-previews li { margin: 0 6px 12px; }
+  #da-breed-tool .hero-previews img { width: 104px; height: 104px; border-width: 4px; }
+  #da-breed-tool .hero-previews span { font-size: 11px; }
   #da-breed-tool .quiz-stage { min-height: auto; padding-top: 30px; }
   #da-breed-tool .question-panel { padding: 32px 20px; border-radius: 26px; }
   #da-breed-tool .answer-grid-two, #da-breed-tool .answer-grid-three { grid-template-columns: 1fr; }
@@ -213,11 +203,6 @@
 #da-breed-tool .site-shell { position: relative !important; }
 #da-breed-tool .brand-mark { position: relative !important; }
 #da-breed-tool .brand-ear { position: absolute !important; }
-#da-breed-tool .hero-visual { position: relative !important; }
-#da-breed-tool .dog-card { position: absolute !important; }
-#da-breed-tool .dog-card figcaption { position: absolute !important; }
-#da-breed-tool .match-badge { position: absolute !important; }
-#da-breed-tool .scribble { position: absolute !important; }
 #da-breed-tool .select-wrap { position: relative !important; }
 #da-breed-tool .select-wrap::after { position: absolute !important; }
 #da-breed-tool .result-photo { position: relative !important; }

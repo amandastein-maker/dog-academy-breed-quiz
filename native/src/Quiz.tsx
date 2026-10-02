@@ -608,34 +608,31 @@ export function BreedQuiz({ embedded = false }: { embedded?: boolean }) {
 
       {view === "intro" && (
         <section className="hero" aria-labelledby="hero-title">
-          <div className="hero-copy">
-            <p className="eyebrow"><span aria-hidden="true">✦</span> Find your perfect match</p>
-            <h2 id="hero-title">Dog Breed Quiz: Which Dog Is Right for You?</h2>
-            <p className="hero-intro">
-              Wondering what dog breed is right for you? Tell us about your home,
-              routine, and personality to find the best dog breeds for your real life.
-            </p>
-            <button className="primary-button" type="button" onClick={startQuiz}>
-              Find my perfect breed <span aria-hidden="true">→</span>
-            </button>
-            <div className="hero-facts" aria-label="Quiz details">
-              <span><strong>12</strong> quick questions</span>
-              <span><strong>3</strong> tailored matches</span>
-              <span><strong>50</strong> states covered</span>
-            </div>
+          <p className="eyebrow"><span aria-hidden="true">✦</span> Find your perfect match</p>
+          <h2 id="hero-title">Dog Breed Quiz: Which Dog Is Right for You?</h2>
+          <p className="hero-intro">
+            Wondering what dog breed is right for you? Tell us about your home,
+            routine, and personality to find the best dog breeds for your real life.
+          </p>
+          <button className="primary-button" type="button" onClick={startQuiz}>
+            Find my perfect breed <span aria-hidden="true">→</span>
+          </button>
+          <div className="hero-facts" aria-label="Quiz details">
+            <span><strong>12</strong> quick questions</span>
+            <span><strong>3</strong> tailored matches</span>
+            <span><strong>50</strong> states covered</span>
           </div>
-
-          <div className="hero-visual" aria-label="A few possible breed matches">
-            <div className="scribble scribble-one" aria-hidden="true" />
-            <div className="scribble scribble-two" aria-hidden="true" />
-            {previewDogs.map((dog, index) => (
-              <figure className={`dog-card dog-card-${index + 1}`} key={dog.name}>
-                <img src={dog.image} alt={`${dog.name} puppy`} />
-                <figcaption>{dog.name}</figcaption>
-              </figure>
+          {/* Plain document flow on purpose: host pages (WordPress themes, page
+              builders) override positioning and image sizing unpredictably, so
+              nothing here depends on position, percentage heights, grid or flex. */}
+          <ul className="hero-previews" aria-label="A few possible breed matches">
+            {previewDogs.map((dog) => (
+              <li key={dog.name}>
+                <img src={dog.image} alt={`${dog.name} puppy`} width={180} height={180} />
+                <span>{dog.name}</span>
+              </li>
             ))}
-            <span className="match-badge">Your match<br />is waiting</span>
-          </div>
+          </ul>
         </section>
       )}
 
