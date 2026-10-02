@@ -21,6 +21,21 @@ root.walkRules((rule) => {
     return /^(?:\:root|html|body)$/.test(selector) ? "#da-breed-tool" : "#da-breed-tool " + selector;
   }).join(", ");
 });
+// Host themes/page builders sometimes ship a global reset (e.g. an
+// "prevent horizontal overflow" snippet) that forces `position: static`
+// on content-area descendants. That strips the `position: relative`
+// anchor our absolutely-positioned photos/badges depend on, so they
+// fall into normal document flow and render as oversized, stacked
+// blocks instead of neatly overlapping thumbnails. Reassert every
+// `position` declaration from the source with `!important`, scoped
+// under our own ID selector, so it outranks a generic host rule.
+const positionOverrides = [];
+root.walkDecls("position", (decl) => {
+  const rule = decl.parent;
+  if (rule.type !== "rule" || (rule.parent?.type === "atrule" && /keyframes$/.test(rule.parent.name))) return;
+  positionOverrides.push(`${rule.selector} { position: ${decl.value} !important; }`);
+});
+
 const extra = `
 #da-breed-tool { color: #1d2f46; background: white; font: 16px/1.6 Arial, Helvetica, sans-serif; }
 #da-breed-tool .site-header, #da-breed-tool .site-footer { display: none; }
@@ -32,6 +47,7 @@ const extra = `
 #da-breed-tool .da-page-content h3 { font-size: 21px; line-height: 1.3; }
 #da-breed-tool .da-page-content a { color: #2864ad; text-decoration: underline; }
 #da-breed-tool .da-page-content li::marker { color: #1bbd7c; }
+${positionOverrides.join("\n")}
 `;
 await writeFile("dist/assets/quiz.css", root.toString() + extra);
 const escape = (text) => text.replaceAll("&", "&amp;").replaceAll('"', "&quot;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");

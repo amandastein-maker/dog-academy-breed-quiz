@@ -210,3 +210,19 @@
 #da-breed-tool .da-page-content h3 { font-size: 21px; line-height: 1.3; }
 #da-breed-tool .da-page-content a { color: #2864ad; text-decoration: underline; }
 #da-breed-tool .da-page-content li::marker { color: #1bbd7c; }
+#da-breed-tool .site-shell { position: relative !important; }
+#da-breed-tool .brand-mark { position: relative !important; }
+#da-breed-tool .brand-ear { position: absolute !important; }
+#da-breed-tool .hero-visual { position: relative !important; }
+#da-breed-tool .dog-card { position: absolute !important; }
+#da-breed-tool .dog-card figcaption { position: absolute !important; }
+#da-breed-tool .match-badge { position: absolute !important; }
+#da-breed-tool .scribble { position: absolute !important; }
+#da-breed-tool .select-wrap { position: relative !important; }
+#da-breed-tool .select-wrap::after { position: absolute !important; }
+#da-breed-tool .result-photo { position: relative !important; }
+#da-breed-tool .result-photo::after { position: absolute !important; }
+#da-breed-tool .result-photo img { position: relative !important; }
+#da-breed-tool .rank-badge { position: absolute !important; }
+#da-breed-tool .result-content li { position: relative !important; }
+#da-breed-tool .result-content li::before { position: absolute !important; }
