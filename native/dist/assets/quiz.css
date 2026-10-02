@@ -45,13 +45,16 @@
 #da-breed-tool .primary-button:hover { background: #35eda4; transform: translateY(-2px); box-shadow: 0 11px 0 var(--yellow-dark); }
 #da-breed-tool .primary-button:active { transform: translateY(5px); box-shadow: 0 4px 0 var(--yellow-dark); }
 #da-breed-tool .primary-button span { padding-left: 12px; }
+/* width: max-content + auto margins centers these blocks even if the host
+   forces display: block or text-align: left on them. */
+#da-breed-tool .hero .primary-button, #da-breed-tool .hero-facts, #da-breed-tool .hero-previews { display: block; width: max-content; max-width: 100%; margin-left: auto; margin-right: auto; }
 #da-breed-tool .hero-facts { margin-top: 30px; text-align: center; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
 #da-breed-tool .hero-facts span { display: inline-block; margin: 6px 13px; }
 #da-breed-tool .hero-facts strong { color: var(--teal); font-size: 18px; margin-right: 3px; }
 
 /* Inline-block row, fixed pixel sizes, aspect-ratio instead of percentage
    heights: survives host-page overrides of position, height: auto, grid/flex. */
-#da-breed-tool .hero-previews { list-style: none; margin: 44px 0 0; padding: 0; text-align: center; }
+#da-breed-tool .hero-previews { list-style: none; margin-top: 44px; padding: 0; text-align: center; }
 #da-breed-tool .hero-previews li { display: inline-block; vertical-align: top; margin: 0 12px 16px; }
 #da-breed-tool .hero-previews img { display: block; width: 180px; max-width: 100%; height: 180px; aspect-ratio: 1 / 1; margin: 0 auto 10px; border-radius: 50%; border: 5px solid #fff; box-shadow: 0 14px 34px rgba(29, 47, 70, .16); object-fit: cover; }
 #da-breed-tool .hero-previews span { display: block; color: var(--ink); font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
